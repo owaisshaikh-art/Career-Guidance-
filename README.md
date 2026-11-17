@@ -86,7 +86,7 @@ student_career_guidance_assistant/
 ├── llm_service.py
 ├── utils.py
 ├── requirements.txt
-├── .env.example
+├── .env
 ├── .gitignore
 ├── README.md
 │
