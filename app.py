@@ -20,238 +20,57 @@ st.set_page_config(
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
-
-:root {
-  --navy: #0d2337;
-  --navy-2: #173b5e;
-  --teal: #1a8f9c;
-  --teal-soft: #7ed2d0;
-  --ink: #203247;
-  --muted: #6d8192;
-  --paper: #edf2f6;
-  --panel: #f8fafc;
-  --line: #dfe6ec;
-  --white: #ffffff;
+:root{--navy:#10243A;--navy2:#173B5E;--teal:#168C8C;--ink:#203247;--muted:#68798B;--paper:#F4F6F8;--line:#DCE4EA}
+.stApp{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}
+html,body,[class*="css"]{font-family:'DM Sans',sans-serif}
+.block-container{max-width:1380px;padding:1.8rem 3rem 3rem}
+h1,h2,h3,h4{color:var(--navy)!important;font-family:'Manrope',sans-serif!important;letter-spacing:-.35px}
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#0B1C2D 0%,#173B5E 100%)}
+[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] p,[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"]{color:#F5F8FB!important}
+.sidebar-note{
+    display:block;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(180,215,235,.30);
+    border-left:4px solid #58C4BE;
+    border-radius:12px;
+    padding:14px 14px;
+    margin-top:14px;
+    color:#F4F8FC!important;
+    font-size:.88rem;
+    line-height:1.6;
 }
-
-html, body, [class*="css"] {
-  font-family: 'DM Sans', sans-serif;
+.sidebar-note div{color:#F4F8FC!important}
+.sidebar-note-title{
+    display:block;
+    color:#8ED7D2!important;
+    font-size:.68rem;
+    font-weight:800;
+    letter-spacing:1.4px;
+    margin-bottom:6px;
 }
-
-.stApp {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-[data-testid="stAppViewContainer"] {
-  background: var(--paper);
-}
-
-.block-container {
-  max-width: 1380px;
-  padding: 1.6rem 2.4rem 2.5rem;
-}
-
-h1, h2, h3, h4 {
-  color: var(--navy) !important;
-  font-family: 'Manrope', sans-serif !important;
-  letter-spacing: -0.35px;
-}
-
-[data-testid="stSidebar"] {
-  background: linear-gradient(180deg, #0b1d2f 0%, #173b5e 100%);
-  border: none;
-  box-shadow: inset -1px 0 0 rgba(255,255,255,0.05);
-}
-
-[data-testid="stSidebar"] h1,
-[data-testid="stSidebar"] h2,
-[data-testid="stSidebar"] h3,
-[data-testid="stSidebar"] p,
-[data-testid="stSidebar"] label,
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
-  color: #f5f8fb !important;
-}
-
-[data-testid="stSidebar"] [data-testid="stInfo"] {
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: #f5f8fb !important;
-  border-radius: 12px;
-  padding: 0.9rem 0.9rem;
-}
-
-[data-testid="stSidebar"] [data-testid="stInfo"] * {
-  color: #f5f8fb !important;
-}
-
-[data-testid="stSidebar"] .stMarkdownContainer {
-  color: #eef6fb !important;
-}
-
-[data-testid="stSidebar"] .stButton > button {
-  background: rgba(255,255,255,0.12) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-  color: #fff !important;
-  border-radius: 10px !important;
-}
-
-.career-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 28px 34px 32px;
-  margin: 0 0 26px;
-  border-radius: 18px;
-  background: linear-gradient(115deg, #0b1d2f 0%, #173b5e 60%, #1d7280 100%);
-  box-shadow: 0 12px 24px rgba(16,36,58,0.12);
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.career-kicker {
-  color: #9ce3df !important;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.career-hero h1 {
-  color: #ffffff !important;
-  font-size: clamp(2rem, 2.8vw, 3.1rem);
-  line-height: 1.08;
-  margin: 0 0 12px;
-  font-weight: 800;
-}
-
-.career-hero p {
-  color: #e4edf4 !important;
-  font-size: 1.05rem;
-  max-width: 820px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-[data-testid="stForm"] {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 1.3rem 1.5rem 1.2rem;
-  box-shadow: 0 7px 18px rgba(16,36,58,0.04);
-}
-
-.stSubheader {
-  margin-top: 0.35rem;
-}
-
-.stTextInput input,
-.stTextArea textarea,
-.stNumberInput input,
-.stSelectbox [data-baseweb="select"] > div {
-  background: #fff !important;
-  color: var(--ink) !important;
-  border: 1px solid #c9d3dc !important;
-  border-radius: 10px !important;
-  min-height: 44px !important;
-}
-
-.stTextInput input:focus,
-.stTextArea textarea:focus,
-.stNumberInput input:focus,
-.stSelectbox [data-baseweb="select"] > div:focus {
-  border-color: var(--teal) !important;
-  box-shadow: 0 0 0 2px rgba(26,143,156,0.12) !important;
-}
-
-.stButton > button,
-.stFormSubmitButton > button,
-.stDownloadButton > button {
-  background: var(--navy) !important;
-  color: #fff !important;
-  border: 1px solid var(--navy) !important;
-  border-radius: 10px !important;
-  min-height: 44px;
-  font-weight: 700;
-  transition: 0.18s ease;
-}
-
-.stButton > button:hover,
-.stFormSubmitButton > button:hover,
-.stDownloadButton > button:hover {
-  background: var(--teal) !important;
-  border-color: var(--teal) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 14px rgba(22,140,140,0.16);
-}
-
-.stButton > button *,
-.stFormSubmitButton > button *,
-.stDownloadButton > button * {
-  color: #fff !important;
-}
-
-[data-testid="stMetric"] {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--teal);
-  border-radius: 14px;
-  padding: 16px 18px;
-  box-shadow: 0 5px 14px rgba(16,36,58,0.04);
-}
-
-[data-testid="stMetricLabel"] {
-  color: var(--muted) !important;
-}
-
-[data-testid="stMetricValue"] {
-  color: var(--navy) !important;
-  font-weight: 800 !important;
-}
-
-[data-testid="stExpander"] {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-[data-testid="stExpander"] summary {
-  color: var(--navy) !important;
-  font-weight: 700;
-}
-
-[data-testid="stFileUploader"] {
-  background: #fff;
-  border: 1.5px dashed #a7b8c5;
-  border-radius: 13px;
-  padding: 12px;
-}
-
-[data-testid="stAlert"] {
-  border-radius: 12px;
-}
-
-[data-testid="stCaptionContainer"] {
-  color: var(--muted) !important;
-}
-
-hr {
-  border-color: var(--line);
-}
-
-@media (max-width: 900px) {
-  .block-container {
-    padding: 1rem 1rem 2rem;
-  }
-
-  .career-hero {
-    padding: 24px 22px;
-  }
-
-  [data-testid="stForm"] {
-    padding: 16px;
-  }
-}
+.career-hero{position:relative;overflow:hidden;padding:34px 38px;border-radius:22px;background:linear-gradient(115deg,#0B1C2D 0%,#173B5E 68%,#176C78 100%);box-shadow:0 14px 34px rgba(16,36,58,.16);margin:0 0 26px}
+.career-kicker{color:#8ED7D2!important;font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.career-hero h1{color:#fff!important;font-size:clamp(1.7rem,3vw,2.55rem);font-weight:800;line-height:1.18;margin:0 0 10px}
+.career-hero p{color:#E2EDF4!important;font-size:1rem;max-width:780px;line-height:1.65;margin:0}
+[data-testid="stForm"]{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px 20px;box-shadow:0 7px 22px rgba(16,36,58,.045)}
+.stTextInput input,.stTextArea textarea,.stNumberInput input{background:#fff!important;color:var(--ink)!important;border:1px solid #CBD6DF!important;border-radius:10px!important}
+.stTextInput input:focus,.stTextArea textarea:focus,.stNumberInput input:focus{border-color:var(--teal)!important;box-shadow:0 0 0 2px rgba(22,140,140,.12)!important}
+.stSelectbox [data-baseweb="select"]>div{background:#fff!important;color:var(--ink)!important;border:1px solid #CBD6DF!important;border-radius:10px!important}
+.stButton>button,.stFormSubmitButton>button,.stDownloadButton>button{background:var(--navy)!important;color:#fff!important;border:1px solid var(--navy)!important;border-radius:10px!important;min-height:43px;font-weight:700!important;transition:.18s ease}
+.stButton>button:hover,.stFormSubmitButton>button:hover,.stDownloadButton>button:hover{background:var(--teal)!important;border-color:var(--teal)!important;transform:translateY(-1px);box-shadow:0 6px 15px rgba(22,140,140,.18)}
+.stButton>button *,.stFormSubmitButton>button *,.stDownloadButton>button *{color:#fff!important}
+[data-testid="stMetric"]{background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:14px;padding:16px 18px;box-shadow:0 5px 16px rgba(16,36,58,.04)}
+[data-testid="stMetricLabel"]{color:var(--muted)!important}
+[data-testid="stMetricValue"]{color:var(--navy)!important;font-weight:800!important}
+[data-testid="stExpander"]{background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+[data-testid="stExpander"] summary{color:var(--navy)!important;font-weight:700}
+[data-testid="stFileUploader"]{background:#fff;border:1.5px dashed #A9BAC8;border-radius:13px;padding:12px}
+[data-testid="stAlert"]{border-radius:12px}
+[data-testid="stCaptionContainer"]{color:var(--muted)!important}
+hr{border-color:var(--line)}
+@media(max-width:900px){.block-container{padding:1rem 1rem 2rem}.career-hero{padding:26px 22px}[data-testid="stForm"]{padding:16px}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -289,7 +108,15 @@ with st.sidebar:
         "This assistant uses a curated career knowledge base and, when configured, "
         "Groq-powered generative AI to create a personalized career plan."
     )
-    st.info("Your profile is used only to generate guidance in this session.")
+    st.markdown(
+        """
+        <div class="sidebar-note">
+            <span class="sidebar-note-title">PRIVACY NOTE</span>
+            <div>Your profile is used only to generate guidance in this session.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # --------------------------------------------------
 # SAMPLE PROFILES
@@ -487,6 +314,7 @@ if submitted:
                     plan = generate_rule_based_plan(profile)
                     mode = "Knowledge-base mode"
 
+            # Store the result in application data keys, not widget keys.
             st.session_state["career_plan"] = plan
             st.session_state["student_profile_data"] = profile
             st.session_state["generation_mode"] = mode
@@ -519,6 +347,7 @@ if plan is not None and profile is not None:
     if summary:
         st.info(summary)
 
+    # CAREER PATHS
     st.markdown("### Recommended career paths")
     roles = plan.get("career_paths", [])
 
@@ -548,6 +377,7 @@ if plan is not None and profile is not None:
             for item in role.get("certifications", []):
                 st.write(f"• {item}")
 
+    # SKILL GAP
     st.markdown("### Skill-gap analysis")
     gaps = plan.get("skill_gap", {})
     col1, col2 = st.columns(2)
@@ -565,6 +395,7 @@ if plan is not None and profile is not None:
     for item in gaps.get("actions", []):
         st.write(f"• {item}")
 
+    # LEARNING ROADMAP
     st.markdown("### Learning roadmap")
     for stage in plan.get("roadmap", []):
         with st.expander(
@@ -581,6 +412,7 @@ if plan is not None and profile is not None:
             st.markdown("**Project idea**")
             st.write(stage.get("project", ""))
 
+    # LEARNING RESOURCES
     st.markdown("### Learning resources")
     for resource in plan.get("learning_resources", []):
         title = resource.get("name", "Learning resource")
@@ -592,6 +424,7 @@ if plan is not None and profile is not None:
         else:
             st.write(f"- {title} — {purpose}")
 
+    # JOB SEARCH RESOURCES
     st.markdown("### Job-search resources")
     for item in plan.get("job_search_resources", []):
         url = item.get("url", "")
@@ -606,6 +439,7 @@ if plan is not None and profile is not None:
         "This application does not claim that any vacancy is live or available."
     )
 
+    # DOWNLOADS
     st.markdown("### Download your career plan")
     download_data = make_download(profile, plan)
 
